@@ -191,6 +191,7 @@ int main() {
     return 0;
 }*/
 
+/*
 #include <stdio.h>
 
 // Desafio Super Trunfo - Comparação das Cartas
@@ -331,6 +332,105 @@ int main() {
         default:
             printf("Opcao invalida!\n");
     }
+
+    return 0;
+}*/
+
+#include <stdio.h>
+
+// Desafio Super Trunfo - Nível Mestre
+
+int main() {
+
+    // ===== CARTA 1 - CURITIBA =====
+    char* estado1 = "PR";
+    char* cidade1 = "Curitiba";
+    int populacao1 = 1963726;
+    float area1 = 434.89;
+    float pib1 = 98.98;
+    int pontos1 = 25;
+
+    float densidade1;
+
+    // ===== CARTA 2 - FORTALEZA =====
+    char* estado2 = "CE";
+    char* cidade2 = "Fortaleza";
+    int populacao2 = 2686612;
+    float area2 = 312.35;
+    float pib2 = 73.40;
+    int pontos2 = 20;
+
+    float densidade2;
+
+    int op1, op2;
+
+    // ===== CÁLCULOS =====
+    densidade1 = populacao1 / area1;
+    densidade2 = populacao2 / area2;
+
+    // ===== EXIBIÇÃO =====
+    printf("=== Cartas ===\n");
+    printf("%s (%s)\n", cidade1, estado1);
+    printf("%s (%s)\n", cidade2, estado2);
+
+    // ===== MENU 1 =====
+    printf("\nEscolha o PRIMEIRO atributo:\n");
+    printf("1 - Populacao\n2 - Area\n3 - PIB\n4 - Pontos\n5 - Densidade\n");
+    scanf("%d", &op1);
+
+    // ===== MENU 2 =====
+    printf("\nEscolha o SEGUNDO atributo:\n");
+
+    if(op1 != 1) printf("1 - Populacao\n");
+    if(op1 != 2) printf("2 - Area\n");
+    if(op1 != 3) printf("3 - PIB\n");
+    if(op1 != 4) printf("4 - Pontos\n");
+    if(op1 != 5) printf("5 - Densidade\n");
+
+    scanf("%d", &op2);
+
+    if(op1 == op2){
+        printf("Erro: nao pode repetir atributo!\n");
+        return 0;
+    }
+
+    float v1c1, v1c2, v2c1, v2c2;
+
+    // ===== ATRIBUTO 1 =====
+    switch(op1){
+        case 1: v1c1=populacao1; v1c2=populacao2; break;
+        case 2: v1c1=area1; v1c2=area2; break;
+        case 3: v1c1=pib1; v1c2=pib2; break;
+        case 4: v1c1=pontos1; v1c2=pontos2; break;
+        case 5: v1c1=densidade1; v1c2=densidade2; break;
+        default: printf("Opcao invalida\n"); return 0;
+    }
+
+    // ===== ATRIBUTO 2 =====
+    switch(op2){
+        case 1: v2c1=populacao1; v2c2=populacao2; break;
+        case 2: v2c1=area1; v2c2=area2; break;
+        case 3: v2c1=pib1; v2c2=pib2; break;
+        case 4: v2c1=pontos1; v2c2=pontos2; break;
+        case 5: v2c1=densidade1; v2c2=densidade2; break;
+        default: printf("Opcao invalida\n"); return 0;
+    }
+
+    // ===== SOMA =====
+    float soma1 = v1c1 + v2c1;
+    float soma2 = v1c2 + v2c2;
+
+    // ===== RESULTADO =====
+    printf("\n=== RESULTADO ===\n");
+
+    printf("%s: %.2f + %.2f = %.2f\n", cidade1, v1c1, v2c1, soma1);
+    printf("%s: %.2f + %.2f = %.2f\n", cidade2, v1c2, v2c2, soma2);
+
+    // operador ternário
+    printf("\nVencedor: %s\n",
+        (soma1 > soma2) ? cidade1 :
+        (soma2 > soma1) ? cidade2 :
+        "Empate");
 
     return 0;
 }
